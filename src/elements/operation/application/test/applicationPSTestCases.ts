@@ -6,7 +6,7 @@ import {
     checkValue,
     futureObject,
     futureValue,
-    sleep,
+    sleep
 } from './util';
 
 export type IApplicationPSContext = {
@@ -26,7 +26,7 @@ export const applicationPSTestCases = [
                 'CallStack'
             );
             return true;
-        },
+        }
     },
     {
         description: 'Draw when DISABLED',
@@ -41,10 +41,10 @@ export const applicationPSTestCases = [
                 );
                 return 'FAILED: got result while disabled';
             } catch (e) {
-                checkObject(context.controller.callStack, [], 'CAllStack');
+                checkObject(context.controller.callStack, [], 'CallStack');
             }
             return true;
-        },
+        }
     },
     {
         description: 'Draw when PING',
@@ -58,7 +58,7 @@ export const applicationPSTestCases = [
                 'CallStack'
             );
             return true;
-        },
+        }
     },
     {
         description: 'Disable from self: remains IDLE',
@@ -71,7 +71,7 @@ export const applicationPSTestCases = [
                 checkValue(context.ps.state, 'IDLE', 'State');
             }
             return true;
-        },
+        }
     },
     {
         description: 'Disable from other: DISABLED, ENABLED after timeout',
@@ -91,12 +91,12 @@ export const applicationPSTestCases = [
                     'handleResult()',
                     'handleDisable()',
                     'handleEnable()',
-                    'handlePing(A)',
+                    'handlePing(A)'
                 ],
                 'CallStack'
             );
             await futureValue(() => context.ps.state, 'IDLE', 'State');
             return true;
-        },
-    },
+        }
+    }
 ] as IApplicationTestCase<IApplicationPSContext>[];
